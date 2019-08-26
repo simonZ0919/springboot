@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>User Login</h1>
+	<form id="form_login">
+	Username:<input type="text" name="username"><br>
+	Password:<input type="text" name="password"><br>
+	<input id="log" type="button" value="login in">
+	</form>
+	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+	$("#log").click(function () {
+		var url="login.do";
+		var data=$("#form_login").serialize();
+		$.ajax({
+			"url":url,
+			"data":data,
+			"type":"POST",
+			"datatype":"json",
+			"success":function(json){
+				if (json.state==1) {
+					location.href="index.html";
+				}else if (json.state==2) {
+					alert(json.message);
+				}else if (json.state==3) {
+					alert(json.message);
+				}else {
+					alert("system error");
+				}
+			}
+			
+		})
+	})
+	
+	</script>
+</body>
+</html>

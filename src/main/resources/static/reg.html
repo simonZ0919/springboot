@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>User Register</h1>
+	<form id="form_reg">
+	Username:<input type="text" name="username"><br>
+	Password:<input type="text" name="password"><br>
+	Age:<input type="text" name="age"><br>
+	Phone:<input type="text" name="phone"><br>
+	Email:<input type="text" name="email"><br>
+	<input id="reg" type="button" value="sign in">
+	</form>
+	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+	$("#reg").click(function () {
+		var url="reg.do";
+		var data=$("#form_reg").serialize();
+		$.ajax({
+			"url":url,
+			"data":data,
+			"type":"POST",
+			"datatype":"json",
+			"success":function(json){
+				if (json.state==1) {
+					location.href="login.html";
+				}else if (json.state==4) {
+					alert(json.message);
+				}else if (json.state==5) {
+					alert(json.message);
+				}else {
+					alert("system error");
+				}
+			}
+			
+		})
+	})
+	
+	</script>
+</body>
+</html>

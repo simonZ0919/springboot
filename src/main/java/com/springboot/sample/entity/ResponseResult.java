@@ -25,6 +25,7 @@ public class ResponseResult implements Serializable{
 		this.message = message;
 	}
 	
+	// get state and exception, set exception message
 	public ResponseResult(Integer state, Exception e) {
 		super();
 		this.state = state;
